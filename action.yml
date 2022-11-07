@@ -2,7 +2,7 @@ name: 'Close an AgilePlace Issue'
 inputs:
   repository:
     required: true
-  ap_payload:
+  payload:
     description: 'The client_payload from AP card associated with an issue'
     required: true
   token:
