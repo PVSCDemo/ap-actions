@@ -7,7 +7,7 @@ inputs:
     required: true
   token:
     description: 'The secret for API access to the GH repo'
-    reqauired: true
+    required: true
 runs:
   using : 'node16'
   main: 'index.js'
