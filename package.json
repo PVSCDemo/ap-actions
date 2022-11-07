@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"build": "for i in ; do ncc build ./${i%%} -m -o ./${i%%}/dist; done"
+		"build": "for i in close-ap-issue; do ncc build ./${i%%} -m -o ./${i%%}/dist; done"
 	},
   "dependencies": {
 	"@actions/core": "^1.2.4",
