@@ -1,6 +1,6 @@
-import { inspect } from "util";
-import { getInput, debug, setFailed, error as _error } from '@actions/core';
-import { Octokit } from "@octokit/rest";
+const { inspect } = require("util");
+const core = require('@actions/core');
+const github = require('@actions/github');
 
 async function run() {
 	const inputs = {
@@ -24,3 +24,4 @@ async function run() {
 		}
 	}
 }
+
