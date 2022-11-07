@@ -1,7 +1,15 @@
 {
+	"scripts": {
+		"build": "for i in ; do ncc build ./${i%%} -m -o ./${i%%}/dist; done"
+	},
   "dependencies": {
+	"@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
     "@octokit/rest": "^19.0.5",
-    "github": "^14.0.0",
     "octokit": "^2.0.10"
+  },
+
+  "devDependencies": {
+    "@vercel/ncc": "^0.34.0"
   }
 }
