@@ -6,7 +6,7 @@ async function run() {
 	const inputs = {
 		token: getInput("token"),
 		repository: getInput("repository"),
-		payload: getInput("payload"),
+		apPayload: getInput("ap_payload"),
 	  };
 	  debug(`Inputs: ${inspect(inputs)}`);
 	try {
@@ -14,7 +14,7 @@ async function run() {
 			auth: inputs.token,
 			baseUrl: inputs.repository
 		});
-		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+payload.card.id)
+		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+apPayload.card.id)
 
 	} catch (error) {
 		debug(inspect(error));
