@@ -1,0 +1,13 @@
+name: 'Close an AgilePlace Issue'
+inputs:
+  repository:
+    required: true
+  payload:
+    description: 'The client_payload from AP card associated with an issue'
+    required: true
+  token:
+    description: 'The secret for API access to the GH repo'
+    reqauired: true
+runs:
+  using : 'node16'
+  main: 'index.js'
