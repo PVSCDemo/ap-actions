@@ -5,7 +5,7 @@ inputs:
     required: true
   repository:
     required: true
-  payload:
+  data:
     description: 'The client_payload from AP card associated with an issue'
     required: true
 runs:
