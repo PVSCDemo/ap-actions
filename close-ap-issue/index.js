@@ -1,13 +1,13 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-async () => {
+(async () => {
 	const inputs = {
 		token: core.getInput("token")
 	}
-
+	core.startGroup('Logging of Code');
 	try {
-		core.startGroup('Logging of Code');
+
 		const repo = github.context.payload.repository;
 		const data = github.context.payload.client_payload;
 		const octo = github.getOctokit(inputs.token);
@@ -27,5 +27,8 @@ async () => {
 		}
 	}
 	core.endGroup();
-}
+
+} )().catch( ex => {
+	core.debug( `Failure: close-ap-issue: ${ex}` );
+} );
 
