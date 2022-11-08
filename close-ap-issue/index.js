@@ -15,6 +15,6 @@ const github = require('@actions/github');
 	return 0;
 
 })().catch(ex => {
-	core.setFailed(error.message);
+	core.setFailed(ex.message);
 	core.debug(`Failure: close-ap-issue: ${ex}`);
 });
