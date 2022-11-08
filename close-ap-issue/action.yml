@@ -5,9 +5,6 @@ inputs:
     required: true
   repository:
     required: true
-  data:
-    description: 'The client_payload from AP card associated with an issue'
-    required: true
 runs:
   using : 'node16'
   main: 'dist/index.js'

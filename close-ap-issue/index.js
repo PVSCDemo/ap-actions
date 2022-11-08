@@ -5,15 +5,15 @@ async function run() {
 	const inputs = {
 		token: core.getInput("token"),
 		repository: core.getInput("repository"),
-		data: JSON.parse( core.getInput("data")),
 	  };
-	  core.debug(`Inputs: ${core.inspect(inputs)}`);
 	try {
-		const octo = new Octokit({
-			auth: inputs.token,
-			baseUrl: inputs.repository
-		});
-		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+inputs.data.card.id)
+		const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+		// const octo = new Octokit({
+		// 	auth: inputs.token,
+		// 	baseUrl: inputs.repository
+		// });
+		// const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+inputs.data.card.id)
 
 	} catch (error) {
 		core.debug(core.inspect(error));
@@ -23,4 +23,5 @@ async function run() {
 		}
 	}
 }
+run();
 
