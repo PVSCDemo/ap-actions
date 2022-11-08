@@ -7,7 +7,7 @@ async function run() {
 		repository: core.getInput("repository"),
 		data: core.getInput("data"),
 	  };
-	  core.debug(`Inputs: ${core.inspect(inputs)}`);
+	  core.warn(`Inputs: ${core.inspect(inputs)}`);
 	try {
 		const octo = new Octokit({
 			auth: inputs.token,
