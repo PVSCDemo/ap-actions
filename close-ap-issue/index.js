@@ -10,7 +10,8 @@ async function run() {
 		const repo = github.context.payload.repository;
 		const data = github.context.payload.client_payload;
 		const octo = github.getOctokit(inputs.token);
-		const q = "q="+encodeURIComponent("is:issue label:\"Defect "+data.card.id + "\"");
+		const q = "q="+encodeURIComponent("is:issue label:"+data.card.id);
+		core.debug(`Search using ${q}`);
 		const results = octo.rest.search.issuesAndPullRequests({q,});
 
 		core.debug(`results: ${JSON.stringify(results)}`)
