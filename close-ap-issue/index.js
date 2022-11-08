@@ -8,11 +8,9 @@ async function run() {
 
 	try {
 		const repo = github.context.payload.repository;
-		const octo = new Octokit({
-			auth: inputs.token,
-			baseUrl: repo
-		});
+		const octo = github.getOctokit(inputs.token);
 		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+inputs.data.card.id)
+		
 		core.debug(`results: ${JSON.stringify(results)}`)
 
 	} catch (error) {
