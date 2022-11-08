@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-async function run() {
+async () => {
 	const inputs = {
 		token: core.getInput("token")
 	}
@@ -17,6 +17,8 @@ async function run() {
 
 		core.debug(`results: ${JSON.stringify(results)}`)
 
+		core.s
+
 	} catch (error) {
 		core.debug(`Error: ${JSON.stringify(error)}`);
 		core.setFailed(error.message);
@@ -26,6 +28,4 @@ async function run() {
 	}
 	core.endGroup();
 }
-run();
-return false;
 
