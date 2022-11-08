@@ -10,7 +10,7 @@ const github = require('@actions/github');
 	const repo = github.context.payload.repository;
 	const data = github.context.payload.client_payload;
 	const octo = github.getOctokit(inputs.token);
-	const q =  "is:issue+label:" + data.card.id;
+	const q =  "is:issue";
 	core.debug(`Search using ${q}`);
 	const results = octo.rest.search.issuesAndPullRequests({ q, });
 
