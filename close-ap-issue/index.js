@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 (async () => {
 	const token = process.env.GH_TOKEN;
-	core.debug(`Token: ${JSON.stringify(tokn)}`);
+	core.debug(`Token: ${token}`);
 	const repo = github.context.payload.repository;
 	const data = github.context.payload.client_payload;
 	const octo = github.getOctokit({ token });
