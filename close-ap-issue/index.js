@@ -1,14 +1,13 @@
-const { inspect } = require("util");
 const core = require('@actions/core');
 const github = require('@actions/github');
 
 async function run() {
 	const inputs = {
-		token: getInput("token"),
-		repository: getInput("repository"),
-		payload: getInput("payload"),
+		token: core.getInput("token"),
+		repository: core.getInput("repository"),
+		payload: core.getInput("payload"),
 	  };
-	  debug(`Inputs: ${inspect(inputs)}`);
+	  core.debug(`Inputs: ${core.inspect(inputs)}`);
 	try {
 		const octo = new Octokit({
 			auth: inputs.token,
@@ -17,10 +16,10 @@ async function run() {
 		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+payload.card.id)
 
 	} catch (error) {
-		debug(inspect(error));
-		setFailed(error.message);
+		core.debug(core.inspect(error));
+		core.setFailed(error.message);
 		if (error.message == 'Resource not accessible by integration') {
-			_error(`See this action's readme for details about this error`);
+			core.error(`See this action's readme for details about this error`);
 		}
 	}
 }
