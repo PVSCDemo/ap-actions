@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const encodeUri = require('encode-uri');
 
 (async () => {
 	core.startGroup('Logging of Code');
