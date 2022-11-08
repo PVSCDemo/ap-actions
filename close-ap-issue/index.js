@@ -5,15 +5,15 @@ async function run() {
 	const inputs = {
 		token: core.getInput("token"),
 		repository: core.getInput("repository"),
-		data: core.getInput("data"),
+		data: JSON.parse( core.getInput("data")),
 	  };
-	console.log('IN PROGRAM');
+	  core.debug(`Inputs: ${core.inspect(inputs)}`);
 	try {
 		const octo = new Octokit({
 			auth: inputs.token,
 			baseUrl: inputs.repository
 		});
-		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+data.card.id)
+		const results = octo.rest.search.issuesAndPullRequests("q=label:Defect "+inputs.data.card.id)
 
 	} catch (error) {
 		core.debug(core.inspect(error));
