@@ -9,7 +9,7 @@ const github = require('@actions/github');
 	const data = github.context.payload.client_payload;
 	const octo = github.getOctokit(inputs.token);
 	const q =  "is:issue label:bug";
-	core.debug(`Search using ${q}`);
+	core.debug(`Search using ${inputs.token} and ${q}`);
 	const results = octo.rest.search.issuesAndPullRequests({ q, });
 	core.debug(`results: ${JSON.stringify(results)}`)
 	return 0;
