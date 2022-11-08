@@ -3,8 +3,5 @@ inputs:
   token:
     description: 'The secret for API access to the GH repo'
     required: true
-  repository:
-    required: true
-runs:
   using : 'node16'
   main: 'dist/index.js'
