@@ -1,8 +1,5 @@
 name: 'Close an AgilePlace Issue'
 inputs:
-  token:
-    description: 'The secret for API access to the GH repo'
-    required: true
 runs:
   using : 'node16'
   main: 'dist/index.js'
