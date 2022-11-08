@@ -11,7 +11,7 @@ const encodeUri = require('encode-uri');
 	const repo = github.context.payload.repository;
 	const data = github.context.payload.client_payload;
 	const octo = github.getOctokit(inputs.token);
-	const q =  encodeUri ("is:issue is:open label:" + data.card.id + " repo:" + repo.full_name);
+	const q =  "is:issue is:open label:" + data.card.id + " repo:" + repo.full_name;
 	core.debug(`Search using ${q}`);
 	const results = octo.rest.search.issuesAndPullRequests({ q, });
 
