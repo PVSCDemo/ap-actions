@@ -7,7 +7,7 @@ async function run() {
 		repository: core.getInput("repository"),
 		data: core.getInput("data"),
 	  };
-	  core.warn(`Inputs: ${core.inspect(inputs)}`);
+	console.log('IN PROGRAM');
 	try {
 		const octo = new Octokit({
 			auth: inputs.token,
