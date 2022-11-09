@@ -8,13 +8,11 @@ const { Octokit } = require("@octokit/rest");
 	const repository_id = github.context.payload.repository.id;
 	const data = github.context.payload.client_payload;
 	const octo = new Octokit( { 
-		auth: token,
-		baseUrl: 'https://api.github.com'
+		auth: token
 	});
 	const q =  data.card.id;
-	core.debug(`Search using ${token} and ${q} on ${repository_id}`);
-	const res = octo.rest.search
-	const results = octo.rest.search.labels({ repository_id, q, });
+	core.debug(`Search using ${q} on ${repository_id}`);
+	const results = octo.rest.issues();
 	core.debug(`results: ${JSON.stringify(results)}`)
 
 })().catch(ex => {
