@@ -1,12 +1,16 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { Octokit } = require("@octokit/rest");
 
 (async () => {
 	const token = process.env.GHB_TOKEN;
 	core.debug(`Token: ${token}`);
 	const repository_id = github.context.payload.repository.id;
 	const data = github.context.payload.client_payload;
-	const octo = github.getOctokit( token );
+	const octo = new Octokit( { 
+		auth: token,
+		baseUrl: 'https://api.github.com'
+	});
 	const q =  data.card.id;
 	core.debug(`Search using ${token} and ${q}`);
 	const res = octo.rest.search
