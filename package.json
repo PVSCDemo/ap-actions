@@ -4,7 +4,8 @@
 	},
 	"dependencies": {
 		"@actions/core": "^1.2.4",
-		"@actions/github": "^4.0.0"
+		"@actions/github": "^4.0.0",
+		"@octokit/rest": "^19.0.5"
 	},
 	"devDependencies": {
 		"@vercel/ncc": "^0.34.0"
