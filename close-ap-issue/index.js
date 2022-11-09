@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 (async () => {
-	const token = process.env.GH_TOKEN;
+	const token = process.env.GHB_TOKEN;
 	core.debug(`Token: ${token}`);
 	const repo = github.context.payload.repository;
 	const data = github.context.payload.client_payload;
