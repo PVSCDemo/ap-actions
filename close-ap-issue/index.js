@@ -12,11 +12,10 @@ const { Octokit } = require("@octokit/rest");
 		baseUrl: 'https://api.github.com'
 	});
 	const q =  data.card.id;
-	core.debug(`Search using ${token} and ${q}`);
+	core.debug(`Search using ${token} and ${q} on ${repository_id}`);
 	const res = octo.rest.search
 	const results = octo.rest.search.labels({ repository_id, q, });
 	core.debug(`results: ${JSON.stringify(results)}`)
-	return 0;
 
 })().catch(ex => {
 	core.setFailed(ex.message);
