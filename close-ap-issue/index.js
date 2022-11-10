@@ -20,7 +20,7 @@ const exc = null;
 			const owner = github.context.payload.repository.owner.login;
 			const repo = github.context.payload.repository.name;
 			const state = "closed";
-			const issue_number = item.id;
+			const issue_number = item.number;
 			core.debug(`Closing issue with ${owner}, ${repo} ${state} ${issue_number}`)
 			await octo.rest.issues.update({
 				owner,
