@@ -11,7 +11,7 @@ const exc = null;
 	const octo = new Octokit( { 
 		auth: token
 	});
-	const q =  "is:issue is:open label:"+data.card.id;
+	const q =  "is:issue is:open label:\"AP Defect\" label:"+data.card.id;
 	core.debug(`Search using ${q} on ${repository_id}`);
 	const results = await octo.rest.search.issuesAndPullRequests({ repository_id, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
@@ -35,4 +35,5 @@ const exc = null;
 	exc = ex;
 	core.setFailed(ex.message);
 });
+//The exception output is limited in length, but the debug output does not seem to be
 if (exc) core.debug(`Failed with error: ${JSON.stringify(ex)}`);
