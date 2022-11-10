@@ -16,7 +16,7 @@ const { Octokit } = require("@octokit/rest");
 	core.debug(`results: ${JSON.stringify(results)}`)
 	if ((results.status == 200) && (results.data.total_count > 0)){
 		results.data.items.map(async (item) => {
-			const owner = github.context.payload.repository.owner.name;
+			const owner = github.context.payload.repository.owner.login;
 			const repo = github.context.payload.repository.name;
 			const state = "closed";
 			const issue_number = item.id;
