@@ -32,4 +32,5 @@ const { Octokit } = require("@octokit/rest");
 
 })().catch(ex => {
 	core.setFailed(ex.message);
+	core.debug(`Failed with error: ${JSON.stringify(ex)}`);
 });
