@@ -15,11 +15,16 @@ const { Octokit } = require("@octokit/rest");
 	core.debug(`results: ${JSON.stringify(results)}`)
 	if ((results.status == 200) && (results.data.total_count > 0)){
 		results.data.items.map(async (item) => {
+			const owner = github.context.payload.repository.owner.name;
+			const repo = github.context.payload.repository.name;
+			const state = "closed";
+			const issue_number = item.id;
+			core.debug(`Closing issue with ${owner}, ${repo} ${state} ${issue_number}`)
 			await octo.rest.issues.update({
-				owner: github.context.payload.repository.owner.name,
-				repo: github.context.payload.repository.name,
-				state : "closed",
-				issue_number: item.id
+				owner,
+				repo,
+				state,
+				issue_number,
 			})
 		})
 	}
