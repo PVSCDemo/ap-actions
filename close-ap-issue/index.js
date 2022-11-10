@@ -5,14 +5,14 @@ const { Octokit } = require("@octokit/rest");
 (async () => {
 	const token = process.env.GHB_TOKEN;
 	core.debug(`Token: ${token}`);
-	const repository_id = github.context.payload.repository.id;
+	const repo = github.context.payload.repository.full_name;
 	const data = github.context.payload.client_payload;
 	const octo = new Octokit( { 
 		auth: token
 	});
 	const q =  data.card.id;
-	core.debug(`Search using ${q} on ${repository_id}`);
-	const results = octo.rest.search.labels({ repository_id, q });
+	core.debug(`Search using ${q} on ${repoName}`);
+	const results = octo.rest.search.labels({ repo, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
 
 })().catch(ex => {
