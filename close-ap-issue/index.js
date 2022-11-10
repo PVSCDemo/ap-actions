@@ -11,7 +11,7 @@ const { Octokit } = require("@octokit/rest");
 		auth: token
 	});
 	const q =  data.card.id;
-	core.debug(`Search using ${q} on ${repoName}`);
+	core.debug(`Search using ${q} on ${repo}`);
 	const results = octo.rest.search.labels({ repo, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
 
