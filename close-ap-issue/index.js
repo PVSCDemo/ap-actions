@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const { Octokit } = require("@octokit/rest");
+const exc = null;
 
 (async () => {
 	core.debug(`Payload: ${JSON.stringify(github.context.payload)}`)
@@ -31,6 +32,7 @@ const { Octokit } = require("@octokit/rest");
 	}
 
 })().catch(ex => {
+	exc = ex;
 	core.setFailed(ex.message);
-	core.debug(`Failed with error: ${JSON.stringify(ex)}`);
 });
+if (exc) core.debug(`Failed with error: ${JSON.stringify(ex)}`);
