@@ -14,8 +14,8 @@ const { Octokit } = require("@octokit/rest");
 	const results = await octo.rest.search.issuesAndPullRequests({ repository_id, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
 	if ((results.status == 200) && (results.data.total_count > 0)){
-		results.data.items.map((item) => {
-			octo.rest.issues.update({
+		results.data.items.map(async (item) => {
+			await octo.rest.issues.update({
 				state : "closed",
 				issue_number: item.id
 			})
