@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: createdefect
-        uses: PVSCDemo/github-actions/createCard@v1.1.3
+        uses: LeanKit/github-actions/createCard@v1.2
         with:
           host: ${{secrets.LEANKIT_URL}}
           apiToken: ${{secrets.LEANKIT_API}}
