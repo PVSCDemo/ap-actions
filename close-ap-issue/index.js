@@ -16,6 +16,8 @@ const { Octokit } = require("@octokit/rest");
 	if ((results.status == 200) && (results.data.total_count > 0)){
 		results.data.items.map(async (item) => {
 			await octo.rest.issues.update({
+				owner: github.context.payload.repository.owner.name,
+				repo: github.context.payload.repository.name,
 				state : "closed",
 				issue_number: item.id
 			})
