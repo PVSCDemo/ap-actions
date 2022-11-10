@@ -10,9 +10,9 @@ const { Octokit } = require("@octokit/rest");
 	const octo = new Octokit( { 
 		auth: token
 	});
-	const q =  data.card.id;
+	const q =  "is:issue is:open label:"+data.card.id;
 	core.debug(`Search using ${q} on ${repository_id}`);
-	const results = await octo.rest.search.labels({ repository_id, q });
+	const results = await octo.rest.search.issuesAndPullRequests({ repository_id, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
 
 })().catch(ex => {
