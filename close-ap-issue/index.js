@@ -4,7 +4,6 @@ const { Octokit } = require("@octokit/rest");
 
 (async () => {
 	const token = process.env.GHB_TOKEN;
-	core.debug(`Token: ${token}`);
 	const repository_id = github.context.payload.repository.id;
 	const data = github.context.payload.client_payload;
 	const octo = new Octokit( { 
@@ -14,8 +13,15 @@ const { Octokit } = require("@octokit/rest");
 	core.debug(`Search using ${q} on ${repository_id}`);
 	const results = await octo.rest.search.issuesAndPullRequests({ repository_id, q });
 	core.debug(`results: ${JSON.stringify(results)}`)
+	if ((results.status == 200) && (results.data.total_count > 0)){
+		results.data.items.map((item) => {
+			octo.rest.issues.update({
+				state : "closed",
+				issue_number: item.id
+			})
+		})
+	}
 
 })().catch(ex => {
 	core.setFailed(ex.message);
-	core.debug(`Failure: close-ap-issue: ${ex}`);
 });
