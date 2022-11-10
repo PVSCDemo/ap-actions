@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const { Octokit } = require("@octokit/rest");
 
 (async () => {
-	core.debug(`Payload: ${github.context.payload}`)
+	core.debug(`Payload: ${JSON.stringify(github.context.payload)}`)
 	const token = process.env.GHB_TOKEN;
 	const repository_id = github.context.payload.repository.id;
 	const data = github.context.payload.client_payload;
